@@ -9,6 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
+    <script> 
+        function save() {
+            localStorage.setItem("applepie", true);
+        }
+
+        window.onload = function() {
+            var favorite = document.getElementById('favorite');
+            if(window.localStorage)
+            {
+                var storage = window.localStorage;
+                if(storage.getItem('applepie') == 'true')
+                {
+                    favorite.innerHTML = "Apple pie is one of your favorites"
+                }
+
+            }
+        }
+
+    </script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
@@ -17,18 +36,28 @@
 <body >
     <header id="mainheader">
         <nav>
-            <!--<img src="images/pie.png" height="55"/> -->
-            <img src="images/cake.svg" height="55"/>
+            <ul>
+                <li><img src="images/cake.svg" height="55"/></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pieoverview.html">All pies</a></li>
+            </ul>
         </nav>
     </header>
 
     <div style="width: 1000px; margin-left: auto;margin-right: auto;">
 
         <aside id="leftmenu">
-            <img src="images/bethanylogo.png"/>
+            <a href="index.html"><img src="images/bethanylogo.png"/></a>
             <header>
                 <h4 style="text-align: center;">Browse our pies</h4>
             </header>
+            <ul>
+                <li><a href="pieoverview.html">All pies</a></li>
+                <li><a href="cheesecakes.html">Cheese cakes</a></li>
+                <li><a href="fruitpies.html">Fruit pies</a></li>
+                <li><a href="seasonalpies.html">Seasonal pies</a></li>
+                <!-- <li><a href="#promos">Promotions</a></li> -->
+            </ul>
             <input type="search" class="searchbox" placeholder="Search our store" />
         </aside>
 
@@ -43,6 +72,12 @@
                     </a>
                     <figcaption>Our world-famous apple pie</figcaption>
                 </figure>
+
+                <p>
+                    <button onclick="save()" type="button">Save as favorite</button>
+                    <span id="favorite"></span>
+                </p>
+
                 <div style="background-color: #f8f4f1;">
                     <strong>Price: $12.95</strong>
                     <h2>Description</h2>
